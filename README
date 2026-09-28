@@ -1,4 +1,7 @@
-OPNsense WIDE-DHCPv6 client
+Indywall WIDE-DHCPv6 client
+
+The DHCPv6 client of the Indywall firewall, used to obtain IPv6
+addresses and delegated prefixes on WAN interfaces.
 
 WIDE-DHCPv6 is an open-source implementation of Dynamic Host
 Configuration Protocol for IPv6 (DHCPv6) developed by the KAME
@@ -18,8 +21,7 @@ Supported message types are as follows:
 Solicit, Advertise, Request, Renew, Rebind, Release, Reply and Information-request.
 
 Note that the current implementation does not support IPv6
-temporary address allocation by DHCPv6, and there is no plan to
-implement that feature at the moment.
+temporary address allocation by DHCPv6.
 
 Improvements made over the years by OPNsense, Debian and FreeBSD:
 
@@ -47,8 +49,22 @@ Improvements made over the years by OPNsense, Debian and FreeBSD:
 - NAINFO configured address environment variable
 - IFNAME name environment variable
 
-Bug Reports and patch submissions
+How the image uses this repository
 
-Feel free to submit bug reports or patches on GitHub at:
+The Indywall image installs this code as the dhcp6c package, built by
+the opnsense/dhcp6c port in indywallfw/ports. The port
+pins a commit of this repository (GH_TAGNAME); to ship a change, merge
+it into master here, then update GH_TAGNAME and regenerate distinfo
+(make makesum) in the port.
 
-https://github.com/opnsense/dhcp6c
+Bug reports and patches
+
+Please report bugs and submit patches at:
+
+https://github.com/indywallfw/dhcp6c
+
+Origin
+
+Indywall is built on OPNsense (https://opnsense.org). This repository
+is a fork of https://github.com/opnsense/dhcp6c and remains available
+under the license in COPYRIGHT.
